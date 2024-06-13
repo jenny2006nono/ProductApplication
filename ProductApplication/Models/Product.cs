@@ -10,7 +10,7 @@ namespace ProductApplication.Models
         [Key]
         public int ProductID { get; set; }   // 商品ID
 
-        [Required]
+        [Required(ErrorMessage = "商品名稱未填寫")] 
         [StringLength(255)]
         public string ProductName { get; set; }   // 商品名稱
 
@@ -23,13 +23,13 @@ namespace ProductApplication.Models
         [Required]
         public int Quantity { get; set; }   // 庫存數量
 
-        public int? CategoryID { get; set; }   // 商品分類ID
+        public int? CategoryID { get; set; } = 1;// 商品分類ID，預設1
 
-        public DateTime DateTime { get; set; } = DateTime.UtcNow;   // 新增日期，默認為當前時間
+        public DateTime DateTime { get; set; } = DateTime.Now;   // 新增日期，默認為當前時間
 
-        public DateTime UpdateTime { get; set; } = DateTime.UtcNow;   // 更新日期，更新時自動更改
+        public DateTime UpdateTime { get; set; } = DateTime.Now;   // 更新日期，更新時自動更改
 
         [Required]
-        public bool IsActive { get; set; } = true;   // 是否上架
+        public bool IsActive { get; set; } = true;   // 是否上架，預設上架
     }
 }
